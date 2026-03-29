@@ -35,31 +35,44 @@ class _MyHomePageState extends State<MyHomePage> {
   
   int num = 0;
 
-  void _printresponse(){
+  void increment(){
     setState(() {
       num++;
     });
   }
   
+  void decrement(){
+    setState(() {
+      num--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
       appBar: AppBar(
-        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        
         title: Text(widget.title),
       ),
+
       body: Center(
       child:Column(
         mainAxisAlignment: .center,
+        spacing: 15,
         children: [
+    
         FloatingActionButton(
-          onPressed: _printresponse,
+          onPressed: increment,
+          child:Icon(Icons.plus_one)
+        
+        ),
+          
+        FloatingActionButton(
+          onPressed: decrement,
           shape: CircleBorder(),
-          ),
+        ),
+       
         Text(
           '$num',
           style:TextStyle(color: Color(0xFF000000)),
