@@ -9,10 +9,15 @@ class MyHomePage extends StatefulWidget {
 
 class _HomePageState extends State<MyHomePage>{
 
+  int x=0;
   void testButton(){
-    print("Button Pressed");
+    print(x);
+
+    x++;
   }
 
+
+    
 
     @override
     Widget build(BuildContext context){
@@ -22,43 +27,42 @@ class _HomePageState extends State<MyHomePage>{
 
       //Construct the Screen
       return Scaffold(
-        appBar: AppBar(title: const Text("My App"),centerTitle: true),
+        appBar: AppBar(
+        title: const Text("My App"),
+        centerTitle: true,
+        elevation: 10,
+        shadowColor: Color(0xff000000),
+        
+        
+        ),
         body: Center(
           child: 
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               children: [
-              Icon(Icons.takeout_dining,size: h*0.2,),
 
-              SizedBox(height: h*0.02),
-
-              ElevatedButton(
-                onPressed: testButton,    
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(w * 0.8, h * 0.06),
-                ),
-                child:Text("Main"),
+              Icon(
+                Icons.account_balance_wallet,size: h*0.2,
+                shadows: [Shadow(color: Color.fromARGB(255, 8, 27, 56),blurRadius: 8)],
+                blendMode:BlendMode.softLight ,
               ),
 
               SizedBox(height: h*0.02),
+              myButtonWidget(title: "Main"),
+              
 
-               ElevatedButton(
-                onPressed: testButton,               
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(w * 0.8, h * 0.06),
-                ),
-                child:Text("Settings"),
-              ),
+              
+
+              SizedBox(height: h*0.02),
+              myButtonWidget(title: "Options"),
+              SizedBox(height: h*0.02),
+              
+              myButtonWidget(title: "Library"),
+
               SizedBox(height: h*0.02),
 
-               ElevatedButton(
-                onPressed: testButton,               
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(w * 0.8, h * 0.06),
-                ),
-                child:Text("Profile"),
-              ),
+              myButtonWidget(title: "Exit"),
 
               SizedBox(height: h*0.02)
              ],
@@ -70,4 +74,32 @@ class _HomePageState extends State<MyHomePage>{
 
       );
     }
+
+
 }
+
+class myButtonWidget extends StatelessWidget{
+  final String title;
+  const myButtonWidget({super.key,required this.title});
+  void onPressed(){
+    
+  }
+
+  @override
+  Widget build(BuildContext context){
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
+    return ElevatedButton(
+      onPressed: onPressed,               
+        style: ElevatedButton.styleFrom(
+        minimumSize: Size(w * 0.4, h * 0.06),
+        elevation: 7,
+        shape: BeveledRectangleBorder(borderRadius: BorderRadiusGeometry.circular(6)
+        ),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255)
+        ),
+        child:Text(title),
+    );
+  }
+}
+
