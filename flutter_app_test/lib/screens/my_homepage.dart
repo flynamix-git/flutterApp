@@ -27,14 +27,7 @@ class _HomePageState extends State<MyHomePage>{
 
       //Construct the Screen
       return Scaffold(
-        appBar: AppBar(
-        title: const Text("My App"),
-        centerTitle: true,
-        elevation: 10,
-        shadowColor: Color(0xff000000),
         
-        
-        ),
         body: Center(
           child: 
             Column(
@@ -44,8 +37,9 @@ class _HomePageState extends State<MyHomePage>{
 
               Icon(
                 Icons.account_balance_wallet,size: h*0.2,
-                shadows: [Shadow(color: Color.fromARGB(255, 8, 27, 56),blurRadius: 8)],
-                blendMode:BlendMode.softLight ,
+                shadows: [Shadow(color: Color.fromARGB(255, 65, 80, 70),blurRadius: 3)],
+                blendMode:BlendMode.overlay,
+                weight: 2,
               ),
 
               SizedBox(height: h*0.02),
@@ -92,13 +86,15 @@ class myButtonWidget extends StatelessWidget{
     return ElevatedButton(
       onPressed: onPressed,               
         style: ElevatedButton.styleFrom(
-        minimumSize: Size(w * 0.4, h * 0.06),
+        minimumSize: Size(w * 0.5, h * 0.06),
         elevation: 7,
-        shape: BeveledRectangleBorder(borderRadius: BorderRadiusGeometry.circular(6)
+        shape: BeveledRectangleBorder(borderRadius: BorderRadiusGeometry.circular(6),
+        side: BorderSide(color: Color(0xffffffff),width: 0.5)
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255)
+        backgroundColor: Color.fromARGB(255, 132, 209, 203)
         ),
         child:Text(title),
+
     );
   }
 }
